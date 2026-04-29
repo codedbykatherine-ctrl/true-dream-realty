@@ -2,7 +2,11 @@ package com.pluralsight;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 public class TransactionFileManager {
 
@@ -21,8 +25,9 @@ public class TransactionFileManager {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
 
-                String date = parts[0];
-                String time = parts[1];
+                LocalDate date = LocalDate.parse(parts[0]);
+                LocalTime time = LocalTime.parse(parts[1]);
+
                 String description = parts[2];
                 String vendor = parts[3];
                 double amount = Double.parseDouble(parts[4]);
@@ -38,6 +43,15 @@ public class TransactionFileManager {
     }
 
     public static void saveTransaction(Transaction t) {
-        // todo: implement method
+        try {
+            FileWriter writer = new FileWriter(FILE_NAME, true);
+
+            writer.write(t.toString() + "\n");
+
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println("Error reading file 😭: " + e.getMessage());
+        }
     }
 }
