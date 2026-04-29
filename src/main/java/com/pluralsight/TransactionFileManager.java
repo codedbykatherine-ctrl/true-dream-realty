@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TransactionFileManager {
 
-    private static final String FILE_NAME = "transactions.csv";
+    private static final String FILE_NAME = "src/main/resources/transactions.csv";
 
     public static ArrayList<Transaction> loadTransactions() {
 
@@ -32,7 +32,7 @@ public class TransactionFileManager {
             }
             reader.close();
         } catch (Exception e) {
-            System.out.println("Error reading file 😭");
+            System.out.println("Error reading file 😭: " + e.getMessage());
         }
         return transactions;
     }
