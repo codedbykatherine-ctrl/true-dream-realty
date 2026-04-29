@@ -2,18 +2,19 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 
 public class Transaction {//date |time |description |vendor| amount
-    private String date;
-    private String time;
+
+    private LocalDate date;
+    private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
+
     // constructor = the method that builds one transaction object
-    public Transaction(String date, String time, String description, String vendor, double amount) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
@@ -21,19 +22,13 @@ public class Transaction {//date |time |description |vendor| amount
         this.amount = amount;
     } // these match the csv columns:
 
-    // this creates a transaction using today's date and current time
-    public static Transaction now(String description, String vendor, double amount) {
-        String date = LocalDate.now().toString();
-        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        return new Transaction(date, time, description, vendor, amount);
-    }
-
     //getters let other files read the private values safely
-    public String getDate() {
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
@@ -47,14 +42,21 @@ public class Transaction {//date |time |description |vendor| amount
 
     public double getAmount() {
         return amount;
-
     }
 
     //this decides how a transaction prints on the screen
     //this method is intentionally replacing the default behavior
+    // i am replacing default tostring()
     @Override
     public String toString() {
-        return date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("%.2f", amount);
-
+        // method returns to a string
+        return date + "|" +
+                //build csv line
+                time.toString().substring(0, 8) + "|"
+                //only take 8 characters
+                + description + "|"
+                + vendor + "|" +
+                String.format("%.2f", amount);
+        // amount = 1850
     }
 }
