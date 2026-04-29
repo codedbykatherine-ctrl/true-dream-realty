@@ -8,7 +8,7 @@ public class TransactionFileManager {
 
     private static final String FILE_NAME = "transactions.csv";
 
-    public static ArrayList<Transaction> loadTransactioms() {
+    public static ArrayList<Transaction> loadTransactions() {
 
         ArrayList<Transaction> transactions = new ArrayList<>();
 
@@ -37,4 +37,7 @@ public class TransactionFileManager {
         return transactions;
     }
 
+    public static void saveTransaction(Transaction t) {
+        // todo: implement method
+    }
 }
