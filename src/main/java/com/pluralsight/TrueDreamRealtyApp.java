@@ -2,6 +2,9 @@ package com.pluralsight;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 //I made the Scanner static because all of my methods are static, and static methods can only directly access static variables.
 // By making the Scanner static, I can reuse the same input object across the entire application without needing to create multiple instances.
 
@@ -67,7 +70,7 @@ public class TrueDreamRealtyApp {
                     break;
 
                 default:
-                    // if user tpes something random
+                    // if user types something random
                     System.out.println("Invalid option. Please choose D, P, L, or X ");
                     break;
             }
@@ -79,6 +82,11 @@ public class TrueDreamRealtyApp {
 
     public static void addDeposit() {
         System.out.println("\n-------- ADD DEPOSIT --------");
+
+        LocalDate date = LocalDate.parse(scanner.nextLine());
+
+        LocalTime time = LocalTime.parse(scanner.nextLine());
+
 
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
@@ -99,15 +107,16 @@ public class TrueDreamRealtyApp {
         }
 
         amount = Math.abs(amount);
-        Transaction t = Transaction.now(description, vendor, amount);
+        Transaction t = new Transaction (date,time, description, vendor, amount);
+
 
         transactions.add(t);
         TransactionFileManager.saveTransaction(t);
 
 
         System.out.println("Deposit Recorded: ");
-        System.out.println(description + "|" + vendor + "| $ " + amount);
         System.out.println(t);
+        System.out.println("Press ENTER to be redirected to home screen");
     }
 
     public static void makePayment() {
@@ -138,6 +147,14 @@ public class TrueDreamRealtyApp {
         System.out.println("Payment Recorded: ");
         System.out.println(description + "|" + vendor + "| $ " + amount);
         System.out.println(t);
+
+
+
+        // this helps pause the program until user enters then program continues
+        System.out.println("\n✨ Deposit recorded successfully!");
+        System.out.println("Press ENTER to return to the home screen .....");
+        scanner.nextLine();
+        //method ends after user press enter then loops back to home screen
 
     }
 }

@@ -65,6 +65,7 @@ public class Ledger {
             Transaction t = transactions.get(i);
 
             if (t.getAmount() > 0) {
+                //only money going in
                 System.out.println(t);
             }
         }
@@ -79,6 +80,7 @@ public class Ledger {
             //< 0 negative money taken out to make a payment
             // only shows payment transaction
             if (t.getAmount() < 0) {
+                //money out
                 System.out.println(t);
             }
         }
