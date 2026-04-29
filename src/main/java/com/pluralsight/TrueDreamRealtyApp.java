@@ -83,8 +83,10 @@ public class TrueDreamRealtyApp {
     public static void addDeposit() {
         System.out.println("\n-------- ADD DEPOSIT --------");
 
+        System.out.println("When did this deposit happen? (YYYY-MM-DD): ");
         LocalDate date = LocalDate.parse(scanner.nextLine());
 
+        System.out.println("What time did it occur? (HH:MM:SS): ");
         LocalTime time = LocalTime.parse(scanner.nextLine());
 
 
@@ -105,7 +107,7 @@ public class TrueDreamRealtyApp {
                     " 😭 enter a number like 6,000 or 6000.00.");
             return;
         }
-
+          //absolute value turns any number to positive
         amount = Math.abs(amount);
         Transaction t = new Transaction (date,time, description, vendor, amount);
 
@@ -121,6 +123,14 @@ public class TrueDreamRealtyApp {
 
     public static void makePayment() {
         System.out.println("\n -------- MAKE PAYMENT --------");
+
+        System.out.println(" When did this payment happen? (YYYY-MM-DD):   ");
+        LocalDate date = LocalDate.parse(scanner.nextLine());
+
+        System.out.println(" What time did it occur? (HH:MM:SS): ");
+        LocalTime time = LocalTime.parse(scanner.nextLine());
+
+
         System.out.print("Enter description : ");
         String description = scanner.nextLine();
 
@@ -139,8 +149,10 @@ public class TrueDreamRealtyApp {
             return;
         }
 
+        // - making sure it is negative
         amount = -Math.abs(amount);
-        Transaction t = Transaction.now(description, vendor, amount);
+        Transaction t = new Transaction(date, time, description, vendor, amount);
+
 
         transactions.add(t);
         TransactionFileManager.saveTransaction(t);
