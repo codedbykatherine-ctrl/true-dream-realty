@@ -56,7 +56,7 @@ public class Ledger {
             }
         }
 
-    }
+
     // D) Deposits
     public static void showDeposits(ArrayList<Transaction> transactions) {
         System.out.println("\n ======== DEPOSITS ========");
