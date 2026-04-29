@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class TrueDreamRealtyApp {
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Transaction>transactions = new ArrayList<>();
-
+    static ArrayList<Transaction> transactions = new ArrayList<>();
 
 
     //this scanner belongs to the CLASS, not to a specific object
@@ -88,23 +87,22 @@ public class TrueDreamRealtyApp {
         String vendor = scanner.nextLine();
 
         System.out.print("Enter amount: ");
-        String input = scanner.nextLine().replace(",","");
+        String input = scanner.nextLine().replace(",", "");
         double amount;
 
-        try{
+        try {
             amount = Double.parseDouble(input);
-        }catch (NumberFormatException e ) {
+        } catch (NumberFormatException e) {
             System.out.println("we can't buy a house with that input" +
                     " 😭 enter a number like 6,000 or 6000.00.");
             return;
         }
 
         amount = Math.abs(amount);
-        Transaction t = Transaction.now(description,vendor, amount);
+        Transaction t = Transaction.now(description, vendor, amount);
 
         transactions.add(t);
         TransactionFileManager.saveTransaction(t);
-
 
 
         System.out.println("Deposit Recorded: ");
@@ -121,19 +119,19 @@ public class TrueDreamRealtyApp {
         String vendor = scanner.nextLine();
 
         System.out.print("Enter amount: ");
-        String input = scanner.nextLine().replace(",","");
+        String input = scanner.nextLine().replace(",", "");
         double amount;
 
-        try{
+        try {
             amount = Double.parseDouble(input);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("you just tried to pay with nonsense 😭 " +
                     "enter a NUMBER like 6000.");
             return;
         }
 
         amount = -Math.abs(amount);
-        Transaction t = Transaction.now(description,vendor, amount);
+        Transaction t = Transaction.now(description, vendor, amount);
 
         transactions.add(t);
         TransactionFileManager.saveTransaction(t);

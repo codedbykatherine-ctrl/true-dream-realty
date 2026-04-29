@@ -16,7 +16,7 @@ public class TransactionFileManager {
             BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
             String line;
             // skip header
-            reader.readeLine();
+            reader.readLine();
 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
