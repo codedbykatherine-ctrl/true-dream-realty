@@ -90,10 +90,37 @@ public class Reports {
         }
 
     }
+    public static void yearToDate(ArrayList<Transaction>transactions){
+        System.out.println("======== 🗓️ Year to Date 🗓️========");
+        LocalDate yearToDate = LocalDate.now();
 
+        for (Transaction t : transactions){
+            LocalDate transactionDate = t.getDate();
+            if (transactionDate.getYear() == today.getYear()
+                %% !transcationDate.isAfter(today)) {
+                Ledger.printTransaction(t);
+            }
+        }
 
+    }
+    public static void previousYear(ArrayList<Transaction>transactions){
+        System.out.println("======== ↞ Previous Year ↞ ========");
+        int previousYear = LocalDate.now().getYear() -1;
+
+        for (Transaction t : transactions){
+            LocalDate transactionDate = t.getDate();
+            if (transactionDate.getYear() == previousYear){
+                Ledger.printTransaction(t);
+
+            }
+        }
+    }
+    public static void searchByVendor(ArrayList<Transaction>transactions){
+
+    }
 }
 
 
-
-
+        System.out.println("4) ↞ Previous Year");
+            System.out.println("5) 🔍Search by Vendor");
+            System.out.println("0) 🔙 Back");
