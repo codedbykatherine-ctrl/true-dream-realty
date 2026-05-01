@@ -3,9 +3,6 @@ package com.pluralsight;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static com.pluralsight.TrueDreamRealtyApp.scanner;
-
 //what happened this month?
 //what happened last month?
 //what happened this year?
@@ -15,8 +12,8 @@ import static com.pluralsight.TrueDreamRealtyApp.scanner;
 //localdate is like having a calendar app
 // month year reports
 public class Reports {
+    Scanner scanner = new Scanner(System.in);
     public static void displayReportsScreen(ArrayList<Transaction> transactions) {
-        Scanner scanner = new Scanner(System.in);
 
         boolean running = true;
 
@@ -30,7 +27,7 @@ public class Reports {
             System.out.println("0) 🔙 Back");
             System.out.println("Choose an option: ");
 
-            String choice = scanner.newLine().trim();
+            String choice = scanner.nextLine().trim();
 
             switch (choice) {
                 case "1":
@@ -52,7 +49,7 @@ public class Reports {
                     running = false;
                     break;
                 default:
-                    System.out.println("Invalid option. Choose 1, 2, 3, 4, 5, or 0.");
+                    System.out.println("Invalid option. Choose 1, 2, 3, 4, 5, or 0. [😬");
             }
         }
     }
@@ -65,7 +62,7 @@ public class Reports {
          for (Transaction t : transactions) {
              LocalDate transactionDate = t.getDate();
 
-             if (transactionDate.t.getMonth() == today.getMonth()
+             if (transactionDate.getMonth() == today.getMonth()
                      //same month
                  && transactionDate.getYear() == today.getYear()
                      //same year
@@ -78,7 +75,7 @@ public class Reports {
 
     }
     public static void previousMonth(ArrayList<Transaction>transactions){
-        System.out.println("======== ⏮️ Previous Month ⏮️========");
+        System.out.println("\n======== ⏮️ Previous Month ⏮️========");
 
         LocalDate previousMonthDate = LocalDate.now().minusMonth(1);
 
@@ -93,20 +90,20 @@ public class Reports {
 
     }
     public static void yearToDate(ArrayList<Transaction>transactions){
-        System.out.println("======== 🗓️ Year to Date 🗓️========");
-        LocalDate yearToDate = LocalDate.now();
+        System.out.println("\n======== 🗓️ Year to Date 🗓️========");
+        LocalDate today = LocalDate.now();
 
         for (Transaction t : transactions){
             LocalDate transactionDate = t.getDate();
             if (transactionDate.getYear() == today.getYear()
-                %% !transcationDate.isAfter(today)) {
+                && !transactionDate.isAfter(today)) {
                 Ledger.printTransaction(t);
             }
         }
 
     }
     public static void previousYear(ArrayList<Transaction>transactions){
-        System.out.println("======== ↞ Previous Year ↞ ========");
+        System.out.println("\n======== ↞ Previous Year ↞ ========");
         int previousYear = LocalDate.now().getYear() -1;
 
         for (Transaction t : transactions){
@@ -118,13 +115,14 @@ public class Reports {
         }
     }
     public static void searchByVendor(ArrayList<Transaction>transactions){
-        System.out.println("======== 🔍Search by Vendor 🔍========";
-        String searchVendor = scanner.newLine().trim().toLowerCase();
+        System.out.println("\n======== 🔍Search by Vendor 🔍========")
 
-        System.out.println("======== 🔍Search RESULTS 🔍========");
+        String searchVendor = scanner.nextLine().trim().toLowerCase();
 
-        for ((Transaction t : transactions)) {
-            if(t.getVendor().to.LowerCase().contains(searchVendor)){
+        System.out.println("\n======== 🔍Search RESULTS 🔍========");
+
+        for ((Transaction t : transactions) {
+            if(t.getVendor().to.LowerCase().contains(searchVendor)) {
                 Ledger.printTransaction(t);
             }
 
