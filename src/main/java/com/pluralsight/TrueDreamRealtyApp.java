@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ public class TrueDreamRealtyApp {
         //start the program by showing the home screen
         transactions = TransactionFileManager.loadTransactions();
         displayHomeScreen();
+
     }
 
     public static void displayHomeScreen() {
@@ -45,6 +47,10 @@ public class TrueDreamRealtyApp {
             //trim. removes spaces " d  "
             // touppercase d becomes D
             String userChoice = scanner.nextLine().trim().toUpperCase();
+
+            if(userChoice.isBlank()){
+                continue;
+            }
 
             //switch is good for menu
             switch (userChoice) {
@@ -81,22 +87,32 @@ public class TrueDreamRealtyApp {
 
 
     public static void addDeposit() {
-        System.out.println("\n-------- ADD DEPOSIT --------");
+        System.out.println("\n-------- 💰 ADD DEPOSIT 💰--------");
 
         System.out.println("When did this deposit happen? (YYYY-MM-DD): ");
         LocalDate date = LocalDate.parse(scanner.nextLine());
 
-        System.out.println("What time did it occur? (HH:MM:SS): ");
-        LocalTime time = LocalTime.parse(scanner.nextLine());
+        System.out.println(" What time did it occur? (e.g. 8:10 or 08:10:00): ");
+        String timeInput = scanner.nextLine().trim();
 
 
-        System.out.print("Enter description: ");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm[:ss]");
+        LocalTime time;
+
+        try{
+            time = LocalTime.parse(timeInput, timeFormatter);
+        } catch (Exception e){
+            System.out.println("Invalid time try like 8:10 or 08:10:03");
+            return;
+        }
+
+        System.out.print("What is this deposit for? ");
         String description = scanner.nextLine();
 
         System.out.print("Enter vendor: ");
         String vendor = scanner.nextLine();
 
-        System.out.print("Enter amount: ");
+        System.out.print("How much is the deposit? ");
         String input = scanner.nextLine().replace(",", "");
         double amount;
 
@@ -116,19 +132,36 @@ public class TrueDreamRealtyApp {
         TransactionFileManager.saveTransaction(t);
 
 
-        System.out.println("Deposit Recorded: ");
-        System.out.println(t);
-        System.out.println("Press ENTER to be redirected to home screen");
+        System.out.println("\\n✨ Deposit recorded successfully!\" ");
+        Ledger.printTransaction(t);
+        // this helps pause the program until user enters then program continues
+        System.out.println("\nPress ENTER to return to the home screen .....");
+        scanner.nextLine();
+        //method ends after user press enter then loops back to home screen
+
     }
 
     public static void makePayment() {
-        System.out.println("\n -------- MAKE PAYMENT --------");
+        System.out.println("\n -------- 💸 MAKE PAYMENT 💸 --------");
 
+
+        //strict format now
+        //TODO MAKE FLEXIBLE FORMAT FOR DATE
         System.out.println(" When did this payment happen? (YYYY-MM-DD):   ");
         LocalDate date = LocalDate.parse(scanner.nextLine());
 
-        System.out.println(" What time did it occur? (HH:MM:SS): ");
-        LocalTime time = LocalTime.parse(scanner.nextLine());
+        //time is flexible with input
+        System.out.println(" What time did it occur? (e.g. 8:10 or 08:10:00): ");
+       String timeInput = scanner.nextLine().trim();
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm[:ss]");
+        LocalTime time;
+        try{
+            time = LocalTime.parse(timeInput, timeFormatter);
+        } catch (Exception e){
+            System.out.println("Invalid time try like 8:10 or 08:10:03");
+            return;
+        }
 
 
         System.out.print("Enter description : ");
@@ -156,17 +189,18 @@ public class TrueDreamRealtyApp {
 
         transactions.add(t);
         TransactionFileManager.saveTransaction(t);
-        System.out.println("Payment Recorded: ");
-        System.out.println(description + "|" + vendor + "| $ " + amount);
-        System.out.println(t);
-
-
+        System.out.println("\\n✨ PAYMENT recorded successfully!\"");
+        Ledger.printTransaction(t);
 
         // this helps pause the program until user enters then program continues
-        System.out.println("\n✨ Deposit recorded successfully!");
-        System.out.println("Press ENTER to return to the home screen .....");
+        System.out.println("\nPress ENTER to return to the home screen .....");
         scanner.nextLine();
         //method ends after user press enter then loops back to home screen
 
     }
 }
+
+//H ONE OR TWO DIGIT HH TWO
+// :  expect 8:10 EX
+// MIN ALWAYS TWO
+// [] THIS MEANS OPTIONAL

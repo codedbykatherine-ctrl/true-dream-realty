@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Transaction {//date |time |description |vendor| amount
@@ -49,11 +50,11 @@ public class Transaction {//date |time |description |vendor| amount
     // i am replacing default tostring()
     @Override
     public String toString() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         // method returns to a string
         return date + "|" +
                 //build csv line
-                time.toString().substring(0, 8) + "|"
-                //only take 8 characters
+                time.format(timeFormatter) + "|"
                 + description + "|"
                 + vendor + "|" +
                 String.format("%.2f", amount);

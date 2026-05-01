@@ -16,11 +16,14 @@ public class TransactionFileManager {
 
         ArrayList<Transaction> transactions = new ArrayList<>();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        //try (...) anything parentheses = "resource"
+        // java will help - auto clean it up
+        //FileReader - opens file
+        //BufferedReader - lets u read line (faster + easier)
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+
             String line;
-            // skip header
-            reader.readLine();
+            reader.readLine(); // skip header
 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -35,23 +38,18 @@ public class TransactionFileManager {
                 Transaction t = new Transaction(date, time, description, vendor, amount);
                 transactions.add(t);
             }
-            reader.close();
         } catch (Exception e) {
-            System.out.println("Error reading file 😭: " + e.getMessage());
+            System.out.println("Error Reading File 😭: " + e.getMessage());
         }
+
         return transactions;
     }
-
-    public static void saveTransaction(Transaction t) {
-        try {
-            FileWriter writer = new FileWriter(FILE_NAME, true);
-
-            writer.write(t.toString() + "\n");
-
-            writer.close();
-
-        } catch (Exception e) {
-            System.out.println("Error reading file 😭: " + e.getMessage());
+     public static void saveTransaction (Transaction t ){
+         try (FileWriter writer = new FileWriter((FILE_NAME), true)) {
+            writer.write(System.lineSeparator() + t.toString());
+        } catch(Exception e ){
+            System.out.println("Error Saving File 😭: " + e.getMessage());
         }
-    }
-}
+      }
+
+      }

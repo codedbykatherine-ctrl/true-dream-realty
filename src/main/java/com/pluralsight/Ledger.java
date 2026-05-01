@@ -2,10 +2,31 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
 
 public class Ledger {
     //ledger has it's own menu
     static Scanner scanner = new Scanner(System.in);
+
+    public static final String RESET = "\u001B[0M";
+    public static final String GREEN = "\u001B[32m";
+    public static final String RED = "\u0018[31m";
+
+    public static void printTransaction(Transaction t ){
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        String color = (t.getAmount() >0) ? GREEN : RED;
+
+        System.out.println(color + "════════════════════════════");
+        System.out.println("DATE:" + t.getDate());
+        System.out.println("DESC:"+ t.getDescription());
+        System.out.println("VENDOR:"+ t.getVendor());
+        System.out.println("AMOUNT:" + currency.format((t.getAmount())));
+        System.out.println("════════════════════════════" + RESET);
+    }
+
 
     public static void displayLedgerScreen() {
         boolean running = true;
@@ -48,7 +69,7 @@ public class Ledger {
     }
      // A) ALL
     public static void showAllTransactions(ArrayList<Transaction> transactions){
-        System.out.println("\n======== ALL TRANSACTIONS ========");
+        System.out.println("\n======== ✨ALL TRANSACTIONS ✨ ========");
 
         for ( int i = transactions.size()-1;i >= 0;i-- ){
             Transaction t = transactions.get(i);
@@ -59,7 +80,7 @@ public class Ledger {
 
     // D) Deposits
     public static void showDeposits(ArrayList<Transaction> transactions) {
-        System.out.println("\n ======== DEPOSITS ========");
+        System.out.println("\n ======== 💰DEPOSITS 💰========");
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction t = transactions.get(i);
@@ -73,7 +94,7 @@ public class Ledger {
     }
     // P) Payments
     public static void showPayments(ArrayList<Transaction> transactions) {
-        System.out.println("======== PAYMENTS ========");
+        System.out.println("======== 💸 PAYMENTS 💸========");
         for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction t = transactions.get(i);
 
