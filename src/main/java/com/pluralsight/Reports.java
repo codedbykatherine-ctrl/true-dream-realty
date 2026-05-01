@@ -107,7 +107,7 @@ public class Reports {
     }
     public static void previousYear(ArrayList<Transaction>transactions){
         System.out.println("======== ↞ Previous Year ↞ ========");
-        int previousYear = LocalDate.now().getYear() -1;
+
 
         for (Transaction t : transactions){
             LocalDate transactionDate = t.getDate();
