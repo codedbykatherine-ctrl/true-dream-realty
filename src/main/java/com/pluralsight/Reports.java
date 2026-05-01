@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.pluralsight.TrueDreamRealtyApp.scanner;
+
 //what happened this month?
 //what happened last month?
 //what happened this year?
@@ -67,7 +69,7 @@ public class Reports {
                      //same month
                  && transactionDate.getYear() == today.getYear()
                      //same year
-                 && !transactionDate.isAfter(today(){
+                 && !transactionDate.isAfter(today)) {
                      // do not show anything after today
                      Ledger.printTransaction(t);
 
@@ -116,11 +118,20 @@ public class Reports {
         }
     }
     public static void searchByVendor(ArrayList<Transaction>transactions){
+        System.out.println("======== 🔍Search by Vendor 🔍========";
+        String searchVendor = scanner.newLine().trim().toLowerCase();
+
+        System.out.println("======== 🔍Search RESULTS 🔍========");
+
+        for ((Transaction t : transactions)) {
+            if(t.getVendor().to.LowerCase().contains(searchVendor)){
+                Ledger.printTransaction(t);
+            }
+
+        }
+
 
     }
 }
 
 
-        System.out.println("4) ↞ Previous Year");
-            System.out.println("5) 🔍Search by Vendor");
-            System.out.println("0) 🔙 Back");
