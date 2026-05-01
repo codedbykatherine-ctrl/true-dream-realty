@@ -123,7 +123,9 @@ public class Reports {
 
         System.out.println("======== 🔍Search RESULTS 🔍========");
 
-
+        for ((Transaction t : transactions)) {
+            if(t.getVendor().to.LowerCase().contains(searchVendor)){
+                Ledger.printTransaction(t);
             }
 
         }
