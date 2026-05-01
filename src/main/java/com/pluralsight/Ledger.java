@@ -9,22 +9,24 @@ public class Ledger {
     //ledger has it's own menu
     static Scanner scanner = new Scanner(System.in);
 
-    public static final String RESET = "\u001B[0M";
+    public static final String RESET = "\u001B[0m";
     public static final String GREEN = "\u001B[32m";
-    public static final String RED = "\u0018[31m";
+    public static final String RED = "\u001B[31m";
 
     public static void printTransaction(Transaction t ){
         NumberFormat currency = NumberFormat.getCurrencyInstance();
+        // user can get fancy and use $
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        String color = (t.getAmount() >0) ? GREEN : RED;
+        String color = (t.getAmount() >= 0) ? GREEN : RED;
 
         System.out.println(color + "════════════════════════════");
         System.out.println("DATE:" + t.getDate());
         System.out.println("DESC:"+ t.getDescription());
         System.out.println("VENDOR:"+ t.getVendor());
         System.out.println("AMOUNT:" + currency.format((t.getAmount())));
-        System.out.println("════════════════════════════" + RESET);
+        System.out.println("════════════════════════════" );
+        System.out.print(RESET);
     }
 
 
@@ -68,12 +70,12 @@ public class Ledger {
 
     }
      // A) ALL
-    public static void showAllTransactions(ArrayList<Transaction> transactions){
+    public static void showAllTransactions(ArrayList<Transaction> transactions) {
         System.out.println("\n======== ✨ALL TRANSACTIONS ✨ ========");
 
-        for ( int i = transactions.size()-1;i >= 0;i-- ){
+        for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction t = transactions.get(i);
-            System.out.println(t);
+            printTransaction(t);
             }
         }
 
@@ -81,13 +83,17 @@ public class Ledger {
     // D) Deposits
     public static void showDeposits(ArrayList<Transaction> transactions) {
         System.out.println("\n ======== 💰DEPOSITS 💰========");
-
+                                        //last ,keep going , backwards
         for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction t = transactions.get(i);
 
             if (t.getAmount() > 0) {
                 //only money going in
-                System.out.println(t);
+               printTransaction(t);
+               Ledger.printTransaction(t);
+                System.out.print(Ledger.RESET);
+                System.out.println("\n Press ENTER to return to Home Screen....");
+                scanner.nextLine();
             }
         }
 
@@ -101,10 +107,12 @@ public class Ledger {
             //< 0 negative money taken out to make a payment
             // only shows payment transaction
             if (t.getAmount() < 0) {
+                printTransaction(t);
                 //money out
-                System.out.println(t);
             }
         }
+        System.out.println("\n Press ENTER to return to Ledger...");
+        scanner.nextLine();
     }
 }
 

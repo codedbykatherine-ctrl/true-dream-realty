@@ -48,7 +48,7 @@ public class TrueDreamRealtyApp {
             // touppercase d becomes D
             String userChoice = scanner.nextLine().trim().toUpperCase();
 
-            if(userChoice.isBlank()){
+            if(userChoice.isBlank()) {
                 continue;
             }
 

@@ -1,23 +1,28 @@
-Ldate|time|description|vendor|amount
-2026-04-01|09:00:00|Rent payment - Unit 1A|Tenant: Maya Johnson|1850.00
-2026-04-01|10:30:00|Rent payment - Unit 2B|Tenant: Devon Lee|2100.00
-2026-04-02|14:15:00|Security deposit - Unit 3C|Tenant: Imani Brooks|1500.00
-2026-04-03|11:45:00|Application fee - Unit 4D|Applicant: Marcus King|75.00
-2026-04-04|13:20:00|Late rent fee - Unit 1A|Tenant: Maya Johnson|85.00
-2026-04-05|08:30:00|Plumbing repair - Unit 2B|QuickFix Plumbing|-275.00
-2026-04-06|15:10:00|Property cleaning service|Sparkle Pro Cleaning|-225.00
-2026-04-07|12:00:00|Electrical repair - Unit 3C|BrightLine Electric|-340.00
-2026-04-08|09:45:00|Landscaping service|Green Dream Landscaping|-180.00
-2026-04-09|16:25:00|Property insurance payment|SafeHome Insurance|-650.00
-2026-03-03|10:00:00|Rent payment - Unit 1A|Tenant: Maya Johnson|1850.00
-2026-03-04|10:15:00|Rent payment - Unit 2B|Tenant: Devon Lee|2100.00
-2026-03-08|14:30:00|HVAC maintenance|CoolAir HVAC|-410.00
-2026-03-15|09:20:00|Lock replacement - Unit 4D|SecureKey Locksmith|-125.00
-2026-02-10|13:45:00|Property tax payment|NYC Finance|-950.00
-2026-01-12|11:30:00|Broker consultation fee|TruePath Realty Advisors|-300.00
-2025-12-01|09:00:00|Rent payment - Unit 1A|Tenant: Maya Johnson|1850.00
-2025-12-02|09:30:00|Rent payment - Unit 2B|Tenant: Devon Lee|2100.00
-2025-11-18|15:00:00|Roof repair payment|Elite Roofing|-1200.00
-2025-10-05|12:10:00|Security deposit received|Tenant: Alana Pierce|1600.00
-2025-08-22|10:40:00|Window replacement - Unit 2B|ClearView Glass|-450.00
-2025-07-22|12:10:00|Property sale deposit|Client: Alana Pierce|5000.00
+date|time|description|vendor|amount
+2026-04-01|09:00:00|rent collected - skyline penthouse suite|ceo ustav thapa|18500.00
+2026-04-01|10:30:00|rent collected - luxury smart condo|property magnate pat roque|21000.00
+2026-04-02|14:15:00|security deposit - waterfront glass villa|visionary silver baby|115000.00
+2026-04-03|11:45:00|application fee (approved instantly ofc)|corporate strategist cris gill|750.00
+2026-04-04|13:20:00|late fee (bc even rich ppl be lazy)|capital overlord dave dykes|850.00
+2026-04-05|08:30:00|emergency plumbing in gold bathroom|estate empress katherine lopez|-2750.00
+2026-04-06|15:10:00|deep cleaning after champagne party|luxury curator wendy quartey|-2250.00
+2026-04-07|12:00:00|electrical install for backyard car dealership build-out|innovation director jose pagan|-3400.00
+2026-04-08|09:45:00|landscaping for private rooftop jungle oasis|portfolio king luis vasquez|-1800.00
+2026-04-09|16:25:00|marble loft overlooking rooftop jungle|asset commander shahali omor|-6500.00
+2026-03-03|10:00:00|rent collected - insurance for 12 properties (light work)|wealth executive mehraj shafat|18500.00
+2026-03-04|10:15:00|rent collected - bi-level luxury duplex w private rooftop jungle terrace + skyline view|operations tycoon hurera ranjiha|21000.00
+2026-03-08|14:30:00|ordered two gorillas for jungle terrace |boss marbin fajardogon|-4100.00
+2026-03-15|09:20:00|smart lock upgrade (fingerprint only)|tech futurist tim startsev|-1250.00
+2026-02-10|13:45:00|property tax on 8 buildings (including rooftop jungle estate)|real estate sovereign zohinur miah|-9500.00
+2026-01-12|11:30:00|consultation w luxury broker (they begged)|deal architect ahmad sidiqi|-3000.00
+2025-12-01|09:00:00|rent collected - ocean view suite|investment guru sheku koroma|18500.00
+2025-12-02|09:30:00|rent collected - sky tower apartment|equity boss zared guzman|21000.00
+2025-11-18|15:00:00|roof repair after helicopter landing mishap|aviation landlord john hart|-12000.00
+2025-10-05|12:10:00|down payment for influencer mansion with rooftop za garden|kat plug|160000.00
+2025-07-22|12:10:00|deposit for full property acquisition (rooftop jungle compound)|realty powerhouse Zohinoor|50000.00
+2026-10-10|11:11:00|Birthday Gift|PrivateGlow|50000.00
+2026-11-11|11:11:00|Amara's Built in TreeHouse|Lopez Constructor|15000.00
+2026-12-06|12:10:00| Down Payment 3 family house|Lopez Constructor|48000.00
+2026-06-08|02:18:00|Purchase of Yatch for Reuions Year Up United|Lopez Constructor|-120000.00
+2026-05-09|09:45:00| manifestation hit my account real quick|PrivateGlow|20000.00
+2026-04-12|03:33:00|donation to luiz gorillas |petco|-20000.00
