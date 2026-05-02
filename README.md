@@ -46,7 +46,6 @@ com.pluralsight
 ├── Ledger.java           // displays transactions
 ├── Transaction.java      // transaction object model
 ├── TransactionFileManager.java // reads/writes CSV
-💅 vibe
 
 this is not just a ledger.
 this is a luxury financial tracking experience.
@@ -61,11 +60,6 @@ and a CEO (me☺️) who definitely knows what they’re doing
 custom search filters
 red payments , green deposits
 
-true dream realty is:
 
-100% legal
-0% fraudulent
-definitely not laundering money through luxury duplexes with rooftop jungle access
-🖤 final note
 
-built with sleep deprivation, ambition, and a slightly unhinged sense of humor.
+
